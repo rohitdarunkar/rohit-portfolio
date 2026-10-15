@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
-import heroImage from "../assets/hero.png";
+// Hero character image is served from public/rohit-character.png.
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -430,7 +430,7 @@ export default function Hero() {
 
             {/* CHARACTER */}
             <motion.img
-              src={heroImage}
+              src={`${import.meta.env.BASE_URL}rohit-character.png`}
               alt="Rohit Darunkar working on a laptop"
               style={{
                 x: characterX,
