@@ -4,8 +4,5 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   base: "/rohit-portfolio/",
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+  plugins: [react(), tailwindcss()],
 });
