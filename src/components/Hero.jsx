@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
+import heroImage from "../assets/hero.png";
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -291,7 +292,7 @@ export default function Hero() {
 
               {/* RESUME */}
               <motion.a
-                href="/Rohit-Darunkar-Resume.pdf"
+                href={`${import.meta.env.BASE_URL}Rohit_Darunkar_Resume.pdf`}
                 download="Rohit Darunkar Resume.pdf"
                 whileHover={{
                   y: -4,
@@ -429,7 +430,7 @@ export default function Hero() {
 
             {/* CHARACTER */}
             <motion.img
-              src="/rohit-character.png"
+              src={heroImage}
               alt="Rohit Darunkar working on a laptop"
               style={{
                 x: characterX,
