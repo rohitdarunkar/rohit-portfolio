@@ -1,0 +1,372 @@
+@import "tailwindcss";
+
+/* ========================================
+   GLOBAL
+======================================== */
+
+:root {
+  --navbar-height: 98px;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f8f5ef;
+  color: #111111;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ========================================
+   DARK MODE
+======================================== */
+
+html.dark-mode,
+html.dark-mode body {
+  background: #000000;
+  color: #ffffff;
+}
+
+
+/* ========================================
+   DARK MODE SECTION TRANSITIONS
+======================================== */
+
+html.dark-mode section {
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease;
+}
+
+
+/* ========================================
+   LIGHT CREAM → BLACK
+======================================== */
+
+html.dark-mode [class*="bg-[#f8f5ef]"] {
+  background-color: #000000 !important;
+}
+
+
+/* ========================================
+   DARK MODE TEXT
+======================================== */
+
+html.dark-mode [class*="text-[#111111]"] {
+  color: #ffffff !important;
+}
+
+html.dark-mode [class*="text-[#174f65]"] {
+  color: #d7e8ed !important;
+}
+
+html.dark-mode [class*="text-[#174f65]/"] {
+  color: rgba(215, 232, 237, 0.8) !important;
+}
+
+
+/* ========================================
+   BORDERS
+======================================== */
+
+html.dark-mode [class*="border-[#111111]"] {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+
+/* ========================================
+   PROJECT / ABOUT DECORATIONS
+======================================== */
+
+html.dark-mode [class*="bg-[#f4513d]"] {
+  background-color: #f4513d !important;
+}
+
+html.dark-mode [class*="bg-[#70c9c0]"] {
+  background-color: #70c9c0 !important;
+}
+
+html.dark-mode [class*="text-[#075d5b]"] {
+  color: #70c9c0 !important;
+}
+
+
+/* ========================================
+   CONTACT
+======================================== */
+
+html.dark-mode [class*="bg-[#111111]"] {
+  background-color: #000000 !important;
+}
+
+
+/* ========================================
+   WHITE ELEMENTS
+======================================== */
+
+html.dark-mode [class*="bg-white/5"] {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+html.dark-mode [class*="border-white/10"] {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+
+/* ========================================
+   IMAGES
+======================================== */
+
+html.dark-mode img {
+  transition: opacity 0.4s ease;
+}
+
+
+/* ========================================
+   SCROLLBAR
+======================================== */
+
+html.dark-mode {
+  scrollbar-color: #333333 #000000;
+}
+
+html.dark-mode::-webkit-scrollbar {
+  width: 10px;
+}
+
+html.dark-mode::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+html.dark-mode::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 10px;
+}
+
+html.dark-mode::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+
+/* ========================================
+   MAIN PAGE SCROLL CONTAINER
+======================================== */
+
+/*
+   IMPORTANT:
+
+   Navbar is fixed and occupies approximately
+   98px of the viewport.
+
+   Therefore the scroll container starts
+   BELOW the navbar.
+
+   We are NOT changing the scrolling behavior.
+*/
+
+.scroll-container {
+  width: 100%;
+
+  /*
+     Leave room for the fixed navbar.
+  */
+  height: calc(100vh - var(--navbar-height));
+  height: calc(100dvh - var(--navbar-height));
+
+  /*
+     Start the scrolling area below the navbar.
+  */
+  margin-top: var(--navbar-height);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scroll-behavior: smooth;
+
+  /*
+     Keep your existing snap behavior.
+  */
+  scroll-snap-type: y mandatory;
+
+  overscroll-behavior-x: none;
+
+  /*
+     Hide scrollbar while keeping scrolling.
+  */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* ========================================
+   PAGE SECTIONS
+======================================== */
+
+.page-section {
+  position: relative;
+
+  width: 100%;
+
+  /*
+     Each section fills the AVAILABLE viewport,
+     not the navbar + viewport.
+  */
+  min-height: calc(100vh - var(--navbar-height));
+  min-height: calc(100dvh - var(--navbar-height));
+
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+
+  overflow: visible;
+}
+
+
+/* ========================================
+   SECTION CHILDREN
+======================================== */
+
+.page-section > * {
+  max-width: 100%;
+}
+
+
+/* ========================================
+   PREVENT CONTENT CLIPPING
+======================================== */
+
+.page-section,
+.page-section section,
+.page-section main,
+.page-section article {
+  max-width: 100%;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 767px) {
+
+  :root {
+    --navbar-height: 78px;
+  }
+
+  html {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  /*
+     Mobile uses normal document scrolling.
+  */
+
+  .scroll-container {
+    height: auto;
+    min-height: 0;
+
+    margin-top: 0;
+
+    overflow-x: hidden;
+    overflow-y: visible;
+
+    scroll-snap-type: none;
+    scroll-behavior: smooth;
+
+    overscroll-behavior: auto;
+  }
+
+  .page-section {
+    min-height: auto;
+    height: auto;
+
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+
+    overflow: visible;
+  }
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  :root {
+    --navbar-height: 90px;
+  }
+
+  .scroll-container {
+    height: calc(100vh - var(--navbar-height));
+    height: calc(100dvh - var(--navbar-height));
+
+    margin-top: var(--navbar-height);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scroll-snap-type: y mandatory;
+  }
+
+  .page-section {
+    min-height: calc(100vh - var(--navbar-height));
+    min-height: calc(100dvh - var(--navbar-height));
+
+    overflow: visible;
+  }
+}
+
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .scroll-container {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+}
